@@ -1,0 +1,22 @@
+{
+  "name": "test",
+  "description": "test",
+  "main": "index.js",
+  "authors": [
+    "Mariusz Henn"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/MariuszHenn/test",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "angularjs#^1.5.6",
+    "bootstrap": "^3.3.6"
+  }
+}

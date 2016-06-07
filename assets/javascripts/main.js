@@ -1,3 +1,3 @@
 (function(){
-angular.module("app",[]);
+angular.module("app",[]);var Product;Product=function(){function r(){var r;return r=function(){function r(r){angular.merge(this,r)}return r}()}return r}(),angular.module("app").factory("Product",[Product]);var Products;Products=function(){function r(r,t){t.get().then(function(t){return r.products=t})}return r}(),angular.module("app").controller("productsController",["$scope","productsService",Products]);var Products;Products=function(){function r(r,t,u){var n;n=[],this.get=function(){var o;return o=t.defer(),r.get("/products.json").then(function(r){var t,e,c;for(t=0,e=r.length;e>t;t++)c=r[t],n.push(new u(c));return o.resolve(n)},function(){return o.reject("Error loading products")}),o.promise}}return r}(),angular.module("app").service("productsService",["$http","$q","Product",Products]);
 })();

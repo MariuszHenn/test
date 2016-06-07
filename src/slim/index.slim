@@ -1,7 +1,11 @@
 doctype html
 html
   head
-    script src='/assets/javasctipts/main.js'
+    script src='/bower_components/jquery/dist/jquery.min.js'
+    script src='/bower_components/bootstrap/dist/js/bootstrap.min.js'
+    script src='/bower_components/angular/angular.js'
+    script src='/assets/javascripts/main.js'
     style src='/assets/stylesheets/main.js'
 
   body ng-app='app'
+    .products ng-controller='productsController'
