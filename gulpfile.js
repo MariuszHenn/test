@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var bower = require('bower');
+var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var ngAnnotate = require('gulp-ng-annotate');
@@ -28,7 +29,7 @@ get_task_function_for = function(task) {
             .pipe(coffee({bare: true}).on('error', gutil.log))
             .pipe(ngAnnotate())
             .pipe(concat(task+'.js'))
-            .pipe(strip_log())
+            //.pipe(strip_log())
             .pipe(uglify())
             .pipe(wrap('(function(){\n<%= contents %>\n})();'))
             .pipe(gulp.dest('./assets/javascripts/'))
@@ -55,4 +56,16 @@ gulp.task('watch', function() {
         t = jobs[i];
         gulp.watch(paths[t],{ maxListeners: 999 }, [t]);
     }
+});
+
+
+gulp.task('sass', function () {
+    return gulp.src('./sass/**/*.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(concat('main.css'))
+        .pipe(gulp.dest('./assets/stylesheets/'))
+});
+
+gulp.task('sass:watch', function () {
+    gulp.watch('./sass/**/*.scss', ['sass']);
 });

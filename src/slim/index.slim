@@ -3,9 +3,21 @@ html
   head
     script src='/bower_components/jquery/dist/jquery.min.js'
     script src='/bower_components/bootstrap/dist/js/bootstrap.min.js'
+    script src='/bower_components/angular-loader/angular-loader.min.js'
     script src='/bower_components/angular/angular.js'
     script src='/assets/javascripts/main.js'
-    style src='/assets/stylesheets/main.js'
+    link rel='stylesheet' href='/assets/stylesheets/main.css'
+    link rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.min.css'
+    link rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap-theme.min.css'
 
   body ng-app='app'
-    .products ng-controller='productsController'
+    .products-container ng-controller='productsController'
+      .products
+        product-view product='product' ng-repeat='product in products'
+      ul.pagination
+        li.page-item.prev ng-class="{disabled: current_page==1}"
+          a ng-click='prev()' <
+        li.page-item ng-class="{active: current_page==($index+1)}"  ng-repeat='c in pages track by $index'
+          a ng-click='open_page($index+1)' {{$index+1}}
+        li.page-item.next ng-class="{disabled: current_page==pages.length}"
+          a ng-click='prev()' >
